@@ -43,7 +43,7 @@ if (isset($config['system_timezone']) && isset($config['system_timezone_gmt'])) 
     date_default_timezone_set('Asia/Kolkata');
     $db->sql("SET `time_zone` = '+05:30'");
 }
-if (isset($_GET['table']) && $_GET['table'] == 'dashboard_info') {
+if (isset($_GET['table']) && $_GET['table'] == 'reviews') {
     $offset = 0;
     $limit = 10;
     $where = '';
@@ -61,7 +61,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dashboard_info') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%'  OR description like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR name like '%" . $search . "%'  OR description like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -71,13 +71,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'dashboard_info') {
         $order = $db->escapeString($_GET['order']);
 
     }        
-    $sql = "SELECT COUNT(`id`) as total FROM `dashboard_info`" . $where;
+    $sql = "SELECT COUNT(`id`) as total FROM `reviews`" . $where;
     $db->sql($sql);
     $res = $db->getResult();
     foreach ($res as $row)
         $total = $row['total'];
 
-    $sql = "SELECT * FROM dashboard_info ". $where ." ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . "," . $limit;
+    $sql = "SELECT * FROM reviews ". $where ." ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . "," . $limit;
     $db->sql($sql);
     $res = $db->getResult();
 
@@ -87,10 +87,17 @@ if (isset($_GET['table']) && $_GET['table'] == 'dashboard_info') {
     $rows = array();
     $tempRow = array();
     foreach ($res as $row) {
-        $operate = ' <a href="edit-dashboard_info.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
-        $operate .= ' <a class="text text-danger" href="delete-dashboard_info.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $operate = ' <a href="edit-review.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-review.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['title'] = $row['title'];
+        $tempRow['name'] = $row['name'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='profile' href='" . $row['image'] . "' data-caption='" . $row['name'] . "'><img src='" . $row['image'] . "' title='" . $row['name'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;

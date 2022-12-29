@@ -14,6 +14,7 @@ if (isset($_POST['btnUpdate'])) {
     $developer_name = $db->escapeString(($_POST['developer_name']));
     $downloads_count = $db->escapeString(($_POST['downloads_count']));
     $ratings = $db->escapeString(($_POST['ratings']));
+    $about = $db->escapeString(($_POST['about']));
     $error = array();
     
    
@@ -149,7 +150,7 @@ if (isset($_POST['btnUpdate'])) {
              $db->sql($sql);
          }
            
-            $sql_query = "UPDATE settings SET app='$app',app_name='$app_name',developer_name='$developer_name',ratings='$ratings',downloads_count='$downloads_count' WHERE id=1";
+            $sql_query = "UPDATE settings SET app='$app',app_name='$app_name',developer_name='$developer_name',ratings='$ratings',downloads_count='$downloads_count',about='$about' WHERE id=1";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -266,7 +267,16 @@ $res = $db->getResult();
                                         <p class="help-block"><img id="blah" src="<?php echo $res[0]['image4']; ?>" style="max-width:50%;padding:4px;"/></p>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>  
+                        <br>
+                        <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <label for="exampleInputEmail1">About</label> <i class="text-danger asterik">*</i><?php echo isset($error['about']) ? $error['about'] : ''; ?>
+                                        <textarea type="text" rows="3" class="form-control" name="about"><?= $res[0]['about']; ?></textarea>
+                                    </div>
+                              </div>
+                         </div>                      
                            
                     </div>
                     <!-- /.box-body -->

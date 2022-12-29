@@ -165,16 +165,16 @@ $fn = new custom_functions;
                         <i class="fa fa-home" class="active"></i> <span>Home</span>
                     </a>
                 </li>
-                <!-- <li class="treeview">
-                    <a href="dashboard_info.php">
-                        <i class="fa fa-sliders"></i>
-                        <span>Dashboard Info</span>
-                    </a>
-                </li> -->
                 <li class="treeview">
                     <a href="settings.php">
                         <i class="fa fa-gear"></i>
                         <span>Settings</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="reviews.php">
+                        <i class="fa fa-star"></i>
+                        <span>Reviews</span>
                     </a>
                 </li>
               
