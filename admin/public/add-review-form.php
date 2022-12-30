@@ -69,7 +69,7 @@ if (isset($_POST['btnAdd'])) {
                     if ($result == 1) {
                         
                         $error['add_review'] = "<section class='content-header'>
-                                                        <span class='label label-success'>Dashboard Info Added Successfully</span> </section>";
+                                                        <span class='label label-success'>Reviews Added Successfully</span> </section>";
                     } else {
                         $error['add_review'] = " <span class='label label-danger'>Failed</span>";
                     }

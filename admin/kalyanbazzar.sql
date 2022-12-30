@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 12:32 PM
+-- Generation Time: Dec 30, 2022 at 06:33 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -39,7 +39,8 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `name`, `description`, `image`) VALUES
-(1, 'Sanjay', ' I am happy with this application and it continues to provide a satisfying interface for getting Matka results online. As always, I found this app satisfactory on the Play Store.', 'upload/profiles/1013-2022-12-29.jpg');
+(1, 'Atticus', 'The features of this application are undoubtedly great and convenient for everyone, so you should get comfortable features to get online matka results.', 'upload/profiles/1672378219.7247.jpg'),
+(2, 'Ranjan', 'This app is amazing! I have downloaded about seven apps that claim to help me make money, but this one has been the most legit. It\'s funny and easy to play. There are several different games you can play, such as a virtual casino game, roulette and blackjack. I\'ve made almost $30 in just a few minutes.', 'upload/profiles/1672378312.5332.png');
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `settings`
